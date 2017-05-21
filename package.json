@@ -1,0 +1,49 @@
+{
+  "name": "extreme-startup-web-server",
+  "version": "0.0.0",
+  "description": "An application server to manage extreme startup game",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "author": "ThomRick",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomRick/extreme-startup-web-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThomRick/extreme-startup-web-server/issues"
+  },
+  "dependencies": {
+    "@nestjs/common": "^2.0.3",
+    "@nestjs/core": "^2.0.5",
+    "@nestjs/microservices": "^2.0.5",
+    "@nestjs/testing": "^2.0.3",
+    "@nestjs/websockets": "^2.0.3",
+    "extreme-startup-core": "git+https://github.com/ThomRick/extreme-startup-core",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.18",
+    "jest": "^20.0.3",
+    "ts-jest": "^20.0.3",
+    "typescript": "^2.3.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  }
+}
