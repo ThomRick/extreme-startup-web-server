@@ -1,5 +1,6 @@
 import {RegistrationService} from './registration.service';
 import {Test} from '@nestjs/testing';
+import {expect} from 'chai';
 
 describe('RegistrationService', () => {
   let service: RegistrationService;
@@ -17,6 +18,6 @@ describe('RegistrationService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeDefined();
+    expect(service).to.exist;
   });
 });
