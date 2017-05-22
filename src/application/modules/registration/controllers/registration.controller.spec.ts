@@ -6,7 +6,6 @@ import {RegistrationModule} from '../registration.module';
 import {expect} from 'chai';
 
 describe('RegistrationController', () => {
-  let application: INestApplication;
   let controller: RegistrationController;
 
   beforeEach(() => {
@@ -19,15 +18,10 @@ describe('RegistrationController', () => {
 
   beforeEach(() => {
     controller = Test.get(RegistrationController);
-    application = NestFactory.create(RegistrationModule);
   });
 
   it('should be created', () => {
     expect(controller).to.exist;
-  });
-
-  it('should expose GET /api/registrations', () => {
-
   });
 
 });

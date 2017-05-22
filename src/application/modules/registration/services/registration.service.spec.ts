@@ -1,12 +1,26 @@
 import {RegistrationService} from './registration.service';
 import {Test} from '@nestjs/testing';
 import {expect} from 'chai';
+import {SinonSandbox, SinonStub} from 'sinon';
+import * as sinon from "Sinon";
+import {GameModule} from '../../game/game.module';
+import {GameService} from '../../game/services/game.service';
+import {Player} from 'extreme-startup-core/lib/common/player';
+import {HttpQuestionSender} from 'extreme-startup-core/lib/common/http-question.sender';
 
 describe('RegistrationService', () => {
+  let sandbox: SinonSandbox;
   let service: RegistrationService;
 
   beforeEach(() => {
+    sandbox = sinon.sandbox.create();
+  });
+
+  beforeEach(() => {
     Test.createTestingModule({
+      modules: [
+        GameModule
+      ],
       components: [
         RegistrationService
       ]
@@ -17,7 +31,17 @@ describe('RegistrationService', () => {
     service = Test.get(RegistrationService);
   });
 
-  it('should be created', () => {
-    expect(service).to.exist;
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  describe('#register()', () => {
+    it('should call GameService.addPlayer()', () => {
+      const addPlayerStub: SinonStub = sandbox.stub(GameService.prototype, 'addPlayer');
+      const nickname: string = 'nickname';
+      const hostname: string = 'hostname';
+      service.register({ nickname, hostname });
+      expect(addPlayerStub.calledWith(new Player(nickname, new HttpQuestionSender(hostname)))).to.be.true;
+    });
   });
 });
