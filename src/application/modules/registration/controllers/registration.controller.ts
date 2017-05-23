@@ -1,5 +1,6 @@
 import {Body, Controller, Get, Post, Res} from '@nestjs/common';
 import {RegistrationService} from '../services/registration.service';
+import {IPlayer} from 'extreme-startup-core/lib/common/interfaces/player.interface';
 
 @Controller('/api/registrations')
 export class RegistrationController {
@@ -14,7 +15,7 @@ export class RegistrationController {
 
   @Post()
   public create(@Body() player, @Res() response) {
-    this.registrationService.register(player);
-    response.status(201).end();
+    const createdPlayer: IPlayer = this.registrationService.register(player);
+    response.status(201).json(createdPlayer);
   }
 }

@@ -46,11 +46,29 @@ describe('GameService', () => {
     });
   });
 
+  describe('#getPlayers()', () => {
+    it.skip('should call ExtremeStartupGameSession.getPlayers()', () => {
+
+    });
+  });
+
+  describe('#getPlayer()', () => {
+    it.skip('should call ExtremeStartupGameSession.getPlayer()', () => {
+
+    });
+  });
+
   describe('#start()', () => {
     it('should call ExtremeStartupGameSession.start()', () => {
       const startStub: SinonStub = sandbox.stub(ExtremeStartupGameSession.prototype, 'start');
       service.start();
       expect(startStub.calledOnce).to.be.true;
+    });
+  });
+
+  describe('#stop()', () => {
+    it.skip('should call ExtremeStartupGameSession.stop()', () => {
+
     });
   });
 });
