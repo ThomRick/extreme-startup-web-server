@@ -49,12 +49,20 @@ describe('RegistrationController', () => {
     });
   });
 
+  describe('#update()', () => {
+
+  });
+
   describe('#create()', () => {
     const player: IPlayer = new Player('nickname', new HttpQuestionSender('hostname'));
 
     let registerStub: SinonStub;
     let request: httpMocks.MockRequest;
     let response: httpMocks.MockResponse;
+
+    beforeEach(() => {
+      registerStub = sandbox.stub(Test.get(RegistrationService), 'register').callsFake(() => player);
+    });
 
     beforeEach(() => {
       request = httpMocks.createRequest({
@@ -66,10 +74,6 @@ describe('RegistrationController', () => {
       response = httpMocks.createResponse({
         eventEmitter: EventEmitter
       });
-    });
-
-    beforeEach(() => {
-      registerStub = sandbox.stub(Test.get(RegistrationService), 'register').callsFake(() => player);
     });
 
     it('should call RegistrationService.register() with the expected parameters', done => {
